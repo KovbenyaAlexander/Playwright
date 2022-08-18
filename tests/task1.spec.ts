@@ -5,7 +5,7 @@ test("Tab number 7 should contain the text 'Текст 7'", async ({ page }) => 
 
   const frame = page.frameLocator("#storybook-preview-iframe");
   const tab = frame.locator("text=Вкладка 7");
-  tab.click();
+  await tab.click();
 
   const textContainer = frame.locator(".eos-tabs-tabpane-active");
 
