@@ -1,11 +1,7 @@
 import { test, expect } from "@playwright/test";
 
-test("The page should display the current time after submit", async ({
-  page,
-}) => {
-  await page.goto(
-    "http://89.189.152.235:1337/?path=/story/eos-timepicker--in-form"
-  );
+test("The page should display the current time after submit", async ({ page }) => {
+  await page.goto("http://89.189.152.235:1337/?path=/story/eos-timepicker--in-form");
 
   const frame = page.frameLocator("#storybook-preview-iframe");
   const showTimePicker = frame.locator(".eos-body .eos-field-suffix-icon");
@@ -16,8 +12,8 @@ test("The page should display the current time after submit", async ({
   await pickCurrentTime.click();
 
   const timeInput = frame.locator(".eos-picker-input #basic_timepicker");
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
+  const hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+  const minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
   const currentTime = `${hours}:${minutes}`;
   await expect(timeInput).toHaveValue(currentTime);
 
