@@ -4,11 +4,13 @@ test("Tab number 7 should contain the text 'Текст 7'", async ({ page }) => 
   await page.goto("http://89.189.152.235:1337/?path=/story/eos-tabs--default");
 
   const frame = page.frameLocator("#storybook-preview-iframe");
-  const tab = frame.locator("text=Вкладка 7");
+
+  const tab = frame.locator(
+    "//div[contains(@class, 'eos-tabs-nav-container')]//span[contains(text(), 'Вкладка 7')]"
+  );
   await tab.click();
 
-  const textContainer = frame.locator(".eos-tabs-tabpane-active");
-
+  const textContainer = frame.locator("//div[contains(@class, 'eos-tabs-tabpane-active')]");
   await expect(textContainer).toHaveText("Текст 7");
 });
 
