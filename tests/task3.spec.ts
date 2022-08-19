@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("task 3", async ({ page }) => {
+test("Elements in the list should correctly add to the right list", async ({ page }) => {
   await page.goto("http://89.189.152.235:1337/?path=/story/eos-twincolumn--default");
   const frame = page.frameLocator("#storybook-preview-iframe");
 
