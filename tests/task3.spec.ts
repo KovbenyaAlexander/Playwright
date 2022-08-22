@@ -10,10 +10,10 @@ test("Elements in the list should correctly add to the right list", async ({ pag
   const label = header4.locator("label.eos-checkbox-wrapper");
   await expect(label).toHaveClass(/eos-checkbox-wrapper-checked/);
 
-  const rightBtn = frame.locator("span.anticon.anticon-right");
-  await rightBtn.click();
+  const arrowRightBtn = frame.locator("span.anticon.anticon-right");
+  await arrowRightBtn.click();
 
-  await expect(rightBtn).not.toBeEnabled();
+  await expect(arrowRightBtn).not.toBeEnabled();
 
   const transferList = frame.locator("ul.eos-transfer-list-content");
   const header4InTransferList = transferList.locator("li[title='{4} Заголовок']");

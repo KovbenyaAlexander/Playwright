@@ -2,14 +2,14 @@ import { test, expect } from "@playwright/test";
 
 test("The page should display the current time after submit", async ({ page }) => {
   await page.goto("http://89.189.152.235:1337/?path=/story/eos-timepicker--in-form");
-
   const frame = page.frameLocator("#storybook-preview-iframe");
-  const showTimePicker = frame.locator(".eos-body .eos-field-suffix-icon");
-  await showTimePicker.click();
 
-  const pickCurrentTime = frame.locator(".eos-picker-now-btn");
+  const showTimePickerBtn = frame.locator(".eos-field-suffix-icon");
+  await showTimePickerBtn.click();
+
+  const pickCurrentTimeBtn = frame.locator(".eos-picker-now-btn");
   const date = new Date();
-  await pickCurrentTime.click();
+  await pickCurrentTimeBtn.click();
 
   const timeInput = frame.locator(".eos-picker-input #basic_timepicker");
   const hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();

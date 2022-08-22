@@ -2,7 +2,6 @@ import { test, expect } from "@playwright/test";
 
 test("Tab number 7 should contain the text 'Текст 7'", async ({ page }) => {
   await page.goto("http://89.189.152.235:1337/?path=/story/eos-tabs--default");
-
   const frame = page.frameLocator("#storybook-preview-iframe");
 
   const tab = frame.locator(
